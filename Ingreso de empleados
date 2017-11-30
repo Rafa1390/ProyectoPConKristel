@@ -1,0 +1,21 @@
+String idEmpleado, nomEmpleado, apellEmpleado, telefono, email;
+
+out.println("Digite el id del empleado");
+idEmpleado = in.readLine();
+out.println("Digite el nombre del empleado");
+nomEmpleado = in.readLine();
+out.println("Digite el apellido del empleado");
+apellEmpleado = in.readLine();
+out.println("Digite el telefono del empleado");
+telefono = in.readLine();
+out.println("Digite el email del empleado");
+email = in.readLine();
+
+
+//Fabricas
+//Se envia el tipo de objeto y los datos del empleado
+
+Empleado empleado = FabricaPuestos.crearPuestos(TiposPuestos.values()[opc -1],
+								  idEmpleado, nomEmpleado, apellEmpleado, telefono, email);
+DecoradorEmpleado contratado = FabricaDepartamentos.crearDepartamento
+									   (TiposDepartamentos.values()[opcD -1], empleado);
