@@ -1,0 +1,22 @@
+	public void desencriptarMensaje(String nomMensaje,String nomLlave) throws Exception {
+		PrivateKey privKey = (PrivateKey)leerArchivoLlave(nomLlave, PRIVATE, PATH_PRIV);
+		Cipher cipher = Cipher.getInstance("RSA");
+		cipher.init(Cipher.DECRYPT_MODE, privKey);
+		byte[] encryptedMessage = leerArchivoMensaje(nomMensaje);
+		byte[] decryptedData = cipher.doFinal(encryptedMessage);
+	    String message = new String(decryptedData,StandardCharsets.UTF_8);
+	    System.out.println("El mensaje era: ");
+		System.out.println(message);
+	}
+	
+	private byte[] leerArchivoMensaje(String messageName) throws Exception{
+		File file = new File(PATH_PUB + messageName + MESSAGE_ENCRYPT_EXTENSION);
+        int length = (int) file.length();
+        BufferedInputStream reader = new BufferedInputStream(new FileInputStream(file));
+        byte[] bytes = new byte[length];
+        reader.read(bytes, 0, length);
+        reader.close();
+        Decoder oneDecoder = Base64.getDecoder();
+		return oneDecoder.decode(bytes);
+		
+	}
