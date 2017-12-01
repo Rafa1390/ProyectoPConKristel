@@ -1,0 +1,28 @@
+	
+  String puestoInspeccionar;
+  Date   fechaDeInspeccion;
+  
+  public InspeccionDePuestos() {
+
+  }
+
+  public String getPuestoInspeccionar() {
+	return puestoInspeccionar;
+  }
+
+  public Date getFechaDeInspeccion() {
+	return fechaDeInspeccion;
+  }
+
+  public void setPuestoInspeccionar(String puestoInspeccionar) {
+	this.puestoInspeccionar = puestoInspeccionar;
+  }
+
+  public void setFechaDeInspeccion(Date fechaDeInspeccion) {
+	this.fechaDeInspeccion = fechaDeInspeccion;
+  }
+
+@Override
+public String toString() {
+	return "Puesto que se inspeccionara: " + puestoInspeccionar + "\n Fecha De Inspeccion: " + fechaDeInspeccion;
+} 
