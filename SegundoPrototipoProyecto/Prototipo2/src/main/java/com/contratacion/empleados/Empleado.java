@@ -25,6 +25,6 @@ public abstract class Empleado {
 	
 	public abstract String codPuesto();
 	public abstract String nomPuesto();
-	public abstract String departamento();
+	public abstract String departamento() throws Exception;
 	public abstract void encriptacion() throws Exception;
 }

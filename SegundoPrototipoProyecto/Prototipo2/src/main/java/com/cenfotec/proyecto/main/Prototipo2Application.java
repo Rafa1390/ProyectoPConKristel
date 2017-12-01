@@ -9,8 +9,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.contratacion.empleados.Supervisor;
-import com.gestion.departamentos.SoporTecnico;
+import com.contratacion.empleados.Empleado;
+import com.contratacion.empleados.TiposPuestos;
+import com.fabrica.empleo.FabricaDepartamentos;
+import com.fabrica.empleo.FabricaPuestos;
+import com.gestion.departamentos.DecoradorEmpleado;
+import com.gestion.departamentos.TiposDepartamentos;
 
 //import main.java.com.cenfotec.encrypt.asymetric.AsymetricEncryptSampleApplication;
 
@@ -37,9 +41,13 @@ public class Prototipo2Application implements CommandLineRunner {
 		 * va a trabajar y asi recibir la instancia de este*/
 		
 		//El gestor deberia recibir la instancia del objeto del puesto deseado
-		String idEmpleado, nomEmpleado, apellEmpleado, telefono, email;
+		String idEmpleado = "01",
+			   nomEmpleado = "Rafael",
+			   apellEmpleado = "Briceño",
+			   telefono = "89307698",
+			   email = "rafab1390@gmail.com";
 		
-		out.println("Digite el id del empleado");
+		/*out.println("Digite el id del empleado");
 		idEmpleado = in.readLine();
 		out.println("Digite el nombre del empleado");
 		nomEmpleado = in.readLine();
@@ -48,12 +56,21 @@ public class Prototipo2Application implements CommandLineRunner {
 		out.println("Digite el telefono del empleado");
 		telefono = in.readLine();
 		out.println("Digite el email del empleado");
-		email = in.readLine();
+		email = in.readLine();*/
 		
 		/*Los datos se deben mandar al gestor*/
 		
-		Supervisor empleado = new Supervisor(idEmpleado, nomEmpleado, apellEmpleado, telefono, email);
-		SoporTecnico contratado = new SoporTecnico(empleado);
+		int opc = 1, opcD = 1;
+		
+		Empleado empleado = FabricaPuestos.crearPuestos(TiposPuestos.values()[opc -1],
+								  idEmpleado, nomEmpleado, apellEmpleado, telefono, email);
+		
+		
+		DecoradorEmpleado contratado = FabricaDepartamentos.crearDepartamento
+									   (TiposDepartamentos.values()[opcD -1], empleado);
+		
+		/*Supervisor empleado = new Supervisor(idEmpleado, nomEmpleado, apellEmpleado, telefono, email);
+		SoporTecnico contratado = new SoporTecnico(empleado);*/
 		
 		//La variable contratado se almacenaría en un arreglo
 		

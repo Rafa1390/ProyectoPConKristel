@@ -1,7 +1,7 @@
 package com.contratacion.empleados;
 
-public class Supervisor extends Empleado{
-	public Supervisor(String pidEmpleado, String pnomEmpleado, String papellEmpleado, String ptelefono, String pemail) {
+public class Gerente extends Empleado{
+	public Gerente(String pidEmpleado, String pnomEmpleado, String papellEmpleado, String ptelefono, String pemail) {
 		this.idEmpleado = pidEmpleado;
 		this.nomEmpleado = pnomEmpleado;
 		this.apellEmpleado = papellEmpleado;
@@ -11,12 +11,12 @@ public class Supervisor extends Empleado{
 	
 	@Override
 	public String codPuesto() {
-		return "SV" + this.idEmpleado;
+		return "GR" + this.idEmpleado;
 	}
 
 	@Override
 	public String nomPuesto() {
-		return "Supervisor";
+		return "Gerente";
 	}
 
 	@Override

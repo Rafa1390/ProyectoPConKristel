@@ -62,8 +62,7 @@ public class ManejoEncriptacion {
 	}
 	
 	Key leerArchivoLlave(String nomLlave, String tipo, String direccion) throws IOException {
-		String direccionLlave = direccion;
-		InputStream in = new FileInputStream (direccionLlave + nomLlave+ tipo + KEY_EXTENSION);
+		InputStream in = new FileInputStream (direccion + nomLlave+ tipo + KEY_EXTENSION);
 		ObjectInputStream oin = new ObjectInputStream(new BufferedInputStream(in));
 		try {
 			BigInteger m = (BigInteger) oin.readObject();

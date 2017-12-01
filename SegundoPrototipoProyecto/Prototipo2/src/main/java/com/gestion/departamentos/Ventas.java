@@ -1,15 +1,15 @@
 package com.gestion.departamentos;
 
 import java.io.File;
-import com.encriptacion.departamento.ManejoEncriptacion;
+
 import com.contratacion.empleados.Empleado;
+import com.encriptacion.departamento.ManejoEncriptacion;
 
-
-public class SoporTecnico extends DecoradorEmpleado{
+public class Ventas extends DecoradorEmpleado{
 	Empleado empleado;
 	private static ManejoEncriptacion encriptacion = new ManejoEncriptacion();
 	
-	public SoporTecnico(Empleado pempleado) {
+	public Ventas(Empleado pempleado) {
 		this.empleado = pempleado;
 	}
 
@@ -40,7 +40,7 @@ public class SoporTecnico extends DecoradorEmpleado{
 
 	@Override
 	public String codPuesto() {
-		return this.empleado.codPuesto() + "ST";
+		return this.empleado.codPuesto() + "VT";
 	}
 
 	@Override
@@ -51,13 +51,13 @@ public class SoporTecnico extends DecoradorEmpleado{
 	@Override
 	public String departamento() throws Exception{
 		encriptacion();
-		return "Soporte Tecnico";
+		return "Ventas";
 	}
 
 	@Override
 	public void encriptacion() throws Exception{
 		String direccion = "C:/Users/rafab/Documents/Programación de software/007 Patrones/Proyecto Patrones/SegundoPrototipoProyecto/LlavesPublicas/";
-		String nomDep = "SoporteTecnico";
+		String nomDep = "Ventas";
 		String archivo = nomDep + "public.key";
 		String llave = direccion + archivo;
 		File fichero = new File(llave);
