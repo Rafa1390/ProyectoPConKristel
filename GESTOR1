@@ -1,0 +1,98 @@
+	ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+	ArrayList<Tramite> tramites = new ArrayList<Tramite>();
+	
+	Tramite devolverTramite (int opc) throws Exception {
+		Tramite nuevoTramite;
+		nuevoTramite = FabricaTramites.crearTramite(CategoriaTramites.values()[opc -1]);
+		return nuevoTramite;
+	}
+	
+	void ingresarTramite(Empleado autor, Empleado receptor, String mensaje, 
+			             String estado, Date fecha ,String asunto, int tipo) throws Exception {
+		
+		Tramite nuevoTramite = devolverTramite(tipo);
+		nuevoTramite.setAutor(autor);
+		nuevoTramite.setReceptor(receptor);
+		nuevoTramite.setMensaje(mensaje);
+		nuevoTramite.setEstado(estado);
+		nuevoTramite.setFecha(fecha);
+		nuevoTramite.setAsunto(asunto);	
+		
+	}
+	
+	void encriptarMensaje(Tramite nuevoTramite, String llave) throws Exception {
+		ManejoEncriptacion manejoEncriptacion = new ManejoEncriptacion();
+		manejoEncriptacion.encriptarMensaje(nuevoTramite,llave);
+	}
+	
+	void desencriptarMensaje(Tramite tramiteLeer, String llave) throws Exception {
+		ManejoEncriptacion manejoEncriptacion = new ManejoEncriptacion();
+		manejoEncriptacion.desencriptarMensaje(tramiteLeer,llave);
+	}
+	
+	Empleado ingresarEmpleado(String idEmpleado, String nomEmpleado,String apellEmpleado,
+			                  String telefono,String email, int tipo) throws Exception {
+		Empleado nuevoEmpleado = FabricaPuestos.crearPuestos(TiposPuestos.values()[tipo -1],idEmpleado, 
+				nomEmpleado, apellEmpleado, telefono, email);
+		return nuevoEmpleado;
+		
+	}
+	
+	void agregarEmpleadoALista(Empleado nuevoEmpleado) {
+		empleados.add(nuevoEmpleado);
+	}
+	
+	void agregarTramiteALista(Tramite nuevoTramite) {
+		tramites.add(nuevoTramite);
+	}
+	
+	boolean buscarEmpleado(String ced) {
+		boolean encontrado = false;
+		
+		for(Empleado empleadoActual : empleados) {
+			if(empleadoActual.getIdEmpleado().equals(ced)) {
+				encontrado = true;
+			}
+		}
+		
+		return encontrado;
+	}
+	
+	ArrayList<Tramite> buscarTramitesRecibidos(String ced){
+		ArrayList<Tramite> tramitesReceptor = new ArrayList<Tramite>();
+		Tramite tramiteMostrar;
+		Empleado empleadoReceptor;
+		for(int i = 0; i < tramites.size(); i++) {
+			tramiteMostrar = tramites.get(i);
+			empleadoReceptor = tramiteMostrar.getReceptor();
+			if(empleadoReceptor.getIdEmpleado().equals(ced)) {
+				tramitesReceptor.add(tramiteMostrar);
+			}
+					
+		}
+		return tramitesReceptor;
+		
+	}
+	
+	ArrayList<Tramite> buscarTramitesEnviados(String ced){
+		ArrayList<Tramite> tramitesAutor = new ArrayList<Tramite>();
+		Tramite tramiteMostrar;
+		Empleado empleadoReceptor;
+		for(int i = 0; i < tramites.size(); i++) {
+			tramiteMostrar = tramites.get(i);
+			empleadoReceptor = tramiteMostrar.getAutor();
+			if(empleadoReceptor.getIdEmpleado().equals(ced)) {
+				tramitesAutor.add(tramiteMostrar);
+			}
+					
+		}
+		return tramitesAutor;
+		
+	}
+	
+	void decoradorEmp(int opcD, Empleado nuevoEmpleado) throws Exception {
+		
+    DecoradorEmpleado contratado = FabricaDepartamentos.crearDepartamento
+				   (TiposDepartamentos.values()[opcD -1], nuevoEmpleado);
+
+	}
