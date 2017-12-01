@@ -1,0 +1,38 @@
+public class EvaluacionDeVentas extends Tramite {
+	String estadoDeVentasActual;
+	String estadoDeVentasAnterior;
+	
+	public EvaluacionDeVentas() {
+
+	} 
+	
+	public EvaluacionDeVentas(String estadoDeVentasActual, String estadoDeVentasAnterior) {
+		this.estadoDeVentasActual = estadoDeVentasActual;
+		this.estadoDeVentasAnterior = estadoDeVentasAnterior;
+	}
+
+	public String getEstadoDeVentasActual() {
+		return estadoDeVentasActual;
+	}
+
+	public String getEstadoDeVentasAnterior() {
+		return estadoDeVentasAnterior;
+	}
+
+	public void setEstadoDeVentasActual(String estadoDeVentasActual) {
+		this.estadoDeVentasActual = estadoDeVentasActual;
+	}
+
+	public void setEstadoDeVentasAnterior(String estadoDeVentasAnterior) {
+		this.estadoDeVentasAnterior = estadoDeVentasAnterior;
+	}
+
+	@Override
+	public String toString() {
+		return "Estado de Ventas Actual: " + estadoDeVentasActual + "\n Estado de venta Anterior: "
+				+ estadoDeVentasAnterior;
+	} 
+	
+	
+
+}
